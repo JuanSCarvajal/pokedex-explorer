@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { registerRootComponent } from 'expo';
 import HomeScreen from '../screens/HomeScreen';
 import DetailScreen from '../screens/DetailScreen';
 
 export default function App() {
-  const [selectedPokemonId, setSelectedPokemonId] = useState(null);
+  // Especificamos que puede ser number, string o null
+  const [selectedPokemonId, setSelectedPokemonId] = useState<number | string | null>(null);
 
   return (
     <SafeAreaProvider>
@@ -18,7 +18,7 @@ export default function App() {
           />
         ) : (
           <HomeScreen
-            onSelectPokemon={(id) => setSelectedPokemonId(id)}
+            onSelectPokemon={(id: number | string) => setSelectedPokemonId(id)}
           />
         )}
       </SafeAreaView>
